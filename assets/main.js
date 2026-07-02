@@ -1,7 +1,7 @@
 /* ============ 479 CODE — shared behaviour ============ */
 const REDUCE=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const WA_NUMBER='2347074733491'; /* <-- update once: every WhatsApp link on the site uses this */
-const EMAIL='479code@gmail.com';
+const WA_NUMBER='2340000000000'; /* <-- update once: every WhatsApp link on the site uses this */
+const EMAIL='hello@479code.com';
 
 /* ------- theme (dark default, remembered) ------- */
 (function(){
@@ -202,3 +202,124 @@ document.addEventListener('DOMContentLoaded',()=>{
     open('https://wa.me/'+WA_NUMBER+'?text='+msg,'_blank');
   });
 });
+
+/* ============ v4 ADDITIONS ============ */
+
+/* --- Project Estimator --- */
+(function(){
+  const wrap=document.getElementById('estimator');
+  if(!wrap)return;
+  const steps=[
+    {q:"What do you need?",opts:["Website","Web App","Mobile App (Android/iOS)","Telematics System","Operational Dashboard","Business Consultancy","Full Digital Package"]},
+    {q:"What's your timeline?",opts:["ASAP — within 2 weeks","1 month","2–3 months","Flexible — quality first"]},
+    {q:"What's your business size?",opts:["Solo / Startup","Small business (1–20 staff)","Medium business (20–100 staff)","Large / Enterprise (100+ staff)"]},
+    {q:"Do you need ongoing support?",opts:["One-time build only","3 months support","6 months support","Annual retainer"]}
+  ];
+  const prices={
+    "Website":{base:"₦150,000",range:"₦150k – ₦600k"},
+    "Web App":{base:"₦400,000",range:"₦400k – ₦1.5M"},
+    "Mobile App (Android/iOS)":{base:"₦600,000",range:"₦600k – ₦2.5M"},
+    "Telematics System":{base:"₦800,000",range:"₦800k – ₦3M"},
+    "Operational Dashboard":{base:"₦300,000",range:"₦300k – ₦1.2M"},
+    "Business Consultancy":{base:"₦100,000",range:"₦100k – ₦500k"},
+    "Full Digital Package":{base:"₦1,200,000",range:"₦1.2M – ₦5M+"}
+  };
+  let current=0,selections=[];
+  const bar=wrap.querySelector('.est-bar-fill');
+  const prog=wrap.querySelector('.est-progress');
+  const result=wrap.querySelector('.est-result');
+  const stepsEl=wrap.querySelectorAll('.est-step');
+
+  function show(i){
+    stepsEl.forEach((s,idx)=>{s.classList.toggle('active',idx===i)});
+    bar.style.width=((i/steps.length)*100)+'%';
+    prog.textContent='Step '+(i+1)+' of '+steps.length;
+  }
+  wrap.querySelectorAll('.est-opt').forEach(o=>{
+    o.addEventListener('click',function(){
+      this.closest('.est-step').querySelectorAll('.est-opt').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');
+      selections[current]=this.textContent;
+    });
+  });
+  const nextBtn=wrap.querySelector('#estNext');
+  const backBtn=wrap.querySelector('#estBack');
+  if(nextBtn)nextBtn.addEventListener('click',()=>{
+    if(!selections[current]){wrap.querySelector('.est-step.active .est-opt').classList.add('selected');selections[current]=wrap.querySelector('.est-step.active .est-opt').textContent;}
+    if(current<steps.length-1){current++;show(current);}
+    else{
+      const p=prices[selections[0]]||{range:"Custom quote"};
+      wrap.querySelector('.est-price').textContent=p.range;
+      stepsEl.forEach(s=>s.classList.remove('active'));
+      result.classList.add('show');
+      bar.style.width='100%';
+      prog.textContent='Complete';
+    }
+  });
+  if(backBtn)backBtn.addEventListener('click',()=>{
+    if(result.classList.contains('show')){result.classList.remove('show');current=steps.length-1;show(current);}
+    else if(current>0){current--;show(current);}
+  });
+  show(0);
+})();
+
+/* --- Live AI Chat --- */
+(function(){
+  const btn=document.getElementById('chatBtn');
+  const box=document.getElementById('chatBox');
+  const closeBtn=document.getElementById('chatClose');
+  const msgs=document.getElementById('chatMsgs');
+  const input=document.getElementById('chatInput');
+  const send=document.getElementById('chatSend');
+  if(!btn||!box)return;
+
+  const WA=typeof WA_NUMBER!=='undefined'?WA_NUMBER:'2340000000000';
+  let history=[{role:'user',content:`You are the friendly AI assistant for 479 CODE, a Nigerian software and operational systems company based in Lagos. You help website visitors learn about 479 CODE's services: Website Development, App Development (Web/Android/iOS), Telematics & Fleet Tracking, Business Consultancy, Fuel TrackPro system, Smart Attendance system, and Fleet Operations Suite. Keep answers concise, professional and friendly. If asked about pricing, say estimates start from ₦150,000 for websites and encourage them to use the estimator or contact the team. Always end with an invitation to start a project. The WhatsApp number is ${WA}.`}];
+
+  btn.addEventListener('click',()=>{
+    box.classList.toggle('open');
+    if(box.classList.contains('open')&&msgs.children.length===0){
+      addMsg('bot','👋 Hi! I\'m the 479 CODE assistant. Ask me anything about our services — websites, apps, telematics, Fuel TrackPro, Smart Attendance — or get a quick quote estimate.');
+    }
+  });
+  if(closeBtn)closeBtn.addEventListener('click',()=>box.classList.remove('open'));
+
+  function addMsg(type,text){
+    const d=document.createElement('div');
+    d.className='chat-msg '+type;
+    d.textContent=text;
+    msgs.appendChild(d);
+    msgs.scrollTop=msgs.scrollHeight;
+    return d;
+  }
+
+  async function ask(q){
+    history.push({role:'user',content:q});
+    const typing=addMsg('bot typing','479 CODE is thinking...');
+    try{
+      const r=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:history[0].content,messages:history.slice(1)})
+      });
+      const data=await r.json();
+      const reply=data.content?.[0]?.text||'Let me connect you with the team directly!';
+      typing.remove();
+      addMsg('bot',reply);
+      history.push({role:'assistant',content:reply});
+    }catch(e){
+      typing.remove();
+      addMsg('bot','Our AI is resting 😄 — chat with us directly on WhatsApp! https://wa.me/'+WA);
+    }
+  }
+
+  function submit(){
+    const q=input.value.trim();
+    if(!q)return;
+    addMsg('usr',q);
+    input.value='';
+    ask(q);
+  }
+  if(send)send.addEventListener('click',submit);
+  if(input)input.addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
+})();

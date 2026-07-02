@@ -269,3 +269,117 @@ footer{background:var(--card);color:var(--soft);border-top:1px solid var(--line)
 #toTop{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--card);color:var(--fg);border:1px solid var(--line);width:46px;height:46px;font-family:var(--mono);font-size:16px;cursor:pointer;opacity:0;pointer-events:none;transition:.3s}
 #toTop.show{opacity:1;pointer-events:auto}
 #toTop:hover{background:var(--laser);color:#fff}
+
+/* ============ ADDITIONS v4 ============ */
+
+/* --- WhatsApp floating button --- */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:80;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s,box-shadow .2s;animation:waPop .6s cubic-bezier(.2,.8,.2,1) 2s both}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 6px 28px rgba(37,211,102,.6)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@keyframes waPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.wa-float .wa-tip{position:absolute;right:66px;background:var(--card);color:var(--fg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;white-space:nowrap;border:1px solid var(--line);opacity:0;pointer-events:none;transition:opacity .2s}
+.wa-float:hover .wa-tip{opacity:1}
+
+/* --- testimonials --- */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+.testi{background:var(--card);border:1px solid var(--line);padding:30px;position:relative;transition:transform .3s,box-shadow .3s}
+.testi:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.testi::before{content:'\201C';font-family:var(--disp);font-size:80px;color:var(--laser);line-height:.8;display:block;margin-bottom:10px}
+.testi p{font-size:15px;color:var(--muted);font-style:italic;line-height:1.7}
+.testi .author{margin-top:20px;display:flex;align-items:center;gap:14px}
+.testi .av{width:42px;height:42px;background:var(--laser);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:15px;font-weight:600;color:#fff;flex-shrink:0}
+.testi .name{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+.testi .role{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--soft);text-transform:uppercase;margin-top:3px}
+.stars{color:var(--laser);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+
+/* --- pricing --- */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.price-card{background:var(--bg);padding:36px 28px;position:relative;transition:background .25s}
+.price-card:hover{background:var(--card)}
+.price-card.featured{background:var(--laser)!important;color:#fff}
+.price-card.featured .eyebrow,.price-card.featured .p-desc,.price-card.featured .p-feat{color:rgba(255,255,255,.8)}
+.price-card.featured .p-price{color:#fff}
+.price-card.featured .p-feat::before{color:#fff}
+.price-card .eyebrow{color:var(--soft);margin-bottom:16px}
+.price-card .eyebrow::before{background:repeating-linear-gradient(90deg,var(--soft) 0 2px,transparent 2px 4px,var(--soft) 4px 7px,transparent 7px 9px)}
+.price-card.featured .eyebrow::before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.7) 0 2px,transparent 2px 4px,rgba(255,255,255,.7) 4px 7px,transparent 7px 9px)}
+.p-name{font-family:var(--disp);font-size:26px;font-weight:600;text-transform:uppercase;margin-bottom:8px}
+.p-price{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--muted);margin-bottom:20px}
+.p-desc{font-size:14px;color:var(--muted);margin-bottom:24px;min-height:52px}
+.p-feats{list-style:none;display:grid;gap:10px;margin-bottom:28px}
+.p-feat{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--fg);padding-left:20px;position:relative}
+.p-feat::before{content:"▮";position:absolute;left:0;color:var(--laser)}
+.price-card.featured .p-feat::before{color:#fff}
+.price-card .btn{width:100%;text-align:center}
+.price-card.featured .btn{background:#fff;color:var(--laser);border-color:#fff}
+.price-card.featured .btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.price-badge{position:absolute;top:0;right:0;background:var(--ink);color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.2em;padding:6px 12px;text-transform:uppercase}
+
+/* --- blog --- */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+.blog-card{border:1px solid var(--line);background:var(--bg);transition:transform .3s,box-shadow .3s;text-decoration:none;color:inherit;display:block}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.blog-img{height:180px;background:var(--card);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.blog-bars{display:flex;align-items:flex-end;gap:4px;height:80px;opacity:.4}
+.blog-bars i{width:6px;background:var(--fg)}
+.blog-laser{position:absolute;top:0;bottom:0;width:2px;background:var(--laser);box-shadow:0 0 10px 2px rgba(232,48,42,.5);animation:sweep 3s ease-in-out infinite}
+.blog-body{padding:24px}
+.blog-cat{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--laser);margin-bottom:10px}
+.blog-card h3{font-size:19px;font-weight:600;margin-bottom:10px;line-height:1.2}
+.blog-card p{font-size:14px;color:var(--muted);line-height:1.6}
+.blog-meta{padding:16px 24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--soft);text-transform:uppercase;display:flex;justify-content:space-between}
+
+/* --- estimator --- */
+.estimator{background:var(--card);border:1px solid var(--line);padding:40px}
+.est-steps{display:grid;gap:24px}
+.est-step{display:none}
+.est-step.active{display:block}
+.est-q{font-family:var(--disp);font-size:clamp(20px,3vw,32px);font-weight:600;margin-bottom:24px;text-transform:uppercase}
+.est-opts{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.est-opt{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:none;border:1.5px solid var(--line);color:var(--muted);padding:12px 20px;cursor:pointer;transition:.2s}
+.est-opt:hover,.est-opt.selected{border-color:var(--laser);color:var(--laser)}
+.est-opt.selected{background:rgba(232,48,42,.08)}
+.est-nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.est-progress{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--soft);text-transform:uppercase;margin-left:auto}
+.est-result{display:none;text-align:center;padding:20px 0}
+.est-result.show{display:block}
+.est-price{font-family:var(--disp);font-size:clamp(36px,6vw,72px);font-weight:600;color:var(--laser);line-height:1;margin:16px 0}
+.est-note{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--soft);text-transform:uppercase;max-width:44ch;margin:0 auto 28px}
+.est-bar{height:3px;background:var(--line);margin-bottom:32px;position:relative}
+.est-bar-fill{height:100%;background:var(--laser);transition:width .4s ease}
+
+/* --- case studies --- */
+.case-grid{display:grid;gap:1px;background:var(--line)}
+.case{display:grid;grid-template-columns:1fr 2fr;gap:0;background:var(--bg);transition:background .25s}
+.case:hover{background:var(--card)}
+.case-left{padding:40px 36px;border-right:1px solid var(--line)}
+.case-right{padding:40px 36px}
+.case .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:12px}
+.case h3{font-size:clamp(22px,3vw,34px);font-weight:600;margin-bottom:8px}
+.case .client{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--soft);text-transform:uppercase}
+.case-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px}
+.case-stat .n{font-family:var(--disp);font-size:clamp(28px,4vw,48px);font-weight:600;color:var(--laser);line-height:1}
+.case-stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--soft);text-transform:uppercase;margin-top:4px}
+.case p{font-size:15px;color:var(--muted);max-width:60ch}
+@media(max-width:720px){.case{grid-template-columns:1fr}.case-left{border-right:none;border-bottom:1px solid var(--line);padding:28px 24px}.case-right{padding:28px 24px}.case-stats{grid-template-columns:repeat(3,1fr)}}
+
+/* --- live chat widget --- */
+#chatBtn{position:fixed;bottom:90px;right:24px;z-index:80;width:56px;height:56px;background:var(--laser);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(232,48,42,.4);transition:transform .2s,box-shadow .2s;animation:waPop .6s cubic-bezier(.2,.8,.2,1) 2.2s both}
+#chatBtn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(232,48,42,.6)}
+#chatBtn svg{width:26px;height:26px;fill:#fff}
+#chatBox{position:fixed;bottom:160px;right:24px;z-index:80;width:340px;background:var(--bg);border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.4);display:none;flex-direction:column;max-height:480px}
+#chatBox.open{display:flex}
+.chat-head{background:var(--laser);padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+.chat-head span{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.chat-head button{background:none;border:none;color:#fff;cursor:pointer;font-size:18px;line-height:1}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:200px}
+.chat-msg{max-width:85%;padding:10px 14px;font-size:13.5px;line-height:1.5}
+.chat-msg.bot{background:var(--card);color:var(--fg);align-self:flex-start;border-left:2px solid var(--laser)}
+.chat-msg.usr{background:var(--laser);color:#fff;align-self:flex-end}
+.chat-msg.typing{color:var(--soft);font-style:italic}
+.chat-foot{border-top:1px solid var(--line);display:flex;gap:0}
+.chat-foot input{flex:1;background:none;border:none;padding:14px 16px;font-family:var(--sans);font-size:14px;color:var(--fg);outline:none}
+.chat-foot input::placeholder{color:var(--soft)}
+.chat-foot button{background:var(--laser);border:none;color:#fff;padding:14px 18px;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.chat-foot button:hover{background:var(--ink)}
+@media(max-width:400px){#chatBox{width:calc(100vw - 20px);right:10px}}
