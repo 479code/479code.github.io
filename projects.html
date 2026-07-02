@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — 479 CODE</title>
+<meta name="description" content="The 479 CODE project archive: web, apps, operational systems, telematics and automation.">
+<meta property="og:title" content="Projects — 479 CODE">
+<meta property="og:description" content="The 479 CODE project archive: web, apps, operational systems, telematics and automation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/main.js" defer></script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="cursor-ring" id="cursor" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="index.html" aria-label="479 CODE home">
+      <span class="logo-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+      <span class="logo-txt">479 <em>CODE</em></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="systems.html">Systems</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeBtn" aria-label="Toggle theme">◑</button>
+      <a class="nav-cta" href="contact.html">Start a project</a>
+      <button id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Project archive</span>
+    <h1>The proof is <span style="color:var(--laser)">on your screen.</span></h1>
+    <p>Every project we've shipped, scannable by category. We don't just claim we build standout software — Exhibit 01 is the page you're reading.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="filters reveal" role="tablist" aria-label="Filter projects">
+      <button class="filter-btn on" data-f="all">All projects</button>
+      <button class="filter-btn" data-f="web">Web &amp; Apps</button>
+      <button class="filter-btn" data-f="ops">Operations</button>
+      <button class="filter-btn" data-f="tlm">Telematics</button>
+      <button class="filter-btn" data-f="aut">Automation</button>
+    </div>
+    <div class="exh-grid">
+      <article class="exh featured reveal" data-cat="web">
+        <span class="badge">You are here</span>
+        <span class="num">EXH-01 / WEB</span>
+        <h3>This Website</h3>
+        <p>Our own site is our portfolio piece: multi-page architecture, dark/light theme engine, live barcode system, scanner cursor, zero templates. What you're experiencing is what we build.</p>
+        <span class="live"><span class="dot"></span>Live — right now</span>
+        <div class="meta"><span>2026</span><span>Web Development</span></div>
+      </article>
+      <article class="exh reveal" data-cat="ops">
+        <span class="num">EXH-02 / OPS</span>
+        <h3>Fuel TrackPro</h3>
+        <p>Multi-station fuel operations platform — pump-level sales, tank dip reconciliation, attendant performance and automated reporting for filling station networks of any size.</p>
+        <span class="live"><span class="dot"></span>In production</span>
+        <div class="meta"><span>Ongoing</span><span>Operational System</span></div>
+      </article>
+      <article class="exh reveal" data-cat="ops">
+        <span class="num">EXH-03 / OPS</span>
+        <h3>Smart Attendance</h3>
+        <p>Workforce accountability system — secure clock-ins, shift intelligence, live HR dashboards and automated daily summaries for growing teams.</p>
+        <span class="live"><span class="dot"></span>In production</span>
+        <div class="meta"><span>Ongoing</span><span>Workforce System</span></div>
+      </article>
+      <article class="exh reveal" data-cat="tlm">
+        <span class="num">EXH-04 / TLM</span>
+        <h3>Fleet Operations Suite</h3>
+        <p>Last-mile delivery performance system — fleet tracking, driver output analysis, fuel monitoring, maintenance logs and KPI dashboards with automated email alerts.</p>
+        <span class="live"><span class="dot"></span>In production</span>
+        <div class="meta"><span>Ongoing</span><span>Telematics</span></div>
+      </article>
+      <article class="exh reveal" data-cat="aut">
+        <span class="num">EXH-05 / AUT</span>
+        <h3>Reporting &amp; Alert Automation</h3>
+        <p>Scheduled email summaries, variance alerts and exception flags layered onto client operations — reports that write and send themselves, every day, on time.</p>
+        <span class="live"><span class="dot"></span>In production</span>
+        <div class="meta"><span>Ongoing</span><span>Automation</span></div>
+      </article>
+      <article class="exh reveal" data-cat="web">
+        <span class="num">EXH-06 / WEB</span>
+        <h3>Client Websites &amp; Web Apps</h3>
+        <p>Corporate sites, dashboards and custom web applications built for businesses across Nigeria — designed to convert, engineered to last. Your project could be next on this wall.</p>
+        <span class="live"><span class="dot"></span>Delivered</span>
+        <div class="meta"><span>2024 — 2026</span><span>Web &amp; Apps</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <span class="eyebrow">Start a project</span>
+  <h2>Your operation, rendered in code.</h2>
+  <p>Tell us what you're running — a station, a fleet, a workforce, a brand — and we'll show you what it looks like automated.</p>
+  <div class="hero-actions">
+    <a class="btn btn-solid" href="contact.html">Start a project</a>
+    <a class="btn btn-ghost" data-wa href="#" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span class="foot-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+    <span>479 CODE — Build · Track · Automate</span>
+    <span>© 2026 · Lagos, Nigeria</span>
+  </div>
+  <div class="foot-credit">Designed &amp; engineered in-house by <b>479 CODE</b> — this website is Exhibit 01 of our portfolio.</div>
+</footer>
+
+<button id="toTop" aria-label="Back to top">▲</button>
+</body>
+</html>
